@@ -29,6 +29,9 @@ export default function DurationExercise({name}) {
       <h2>{mins}:{secs}:{mills}</h2>
       <button onClick={startStop}>{running ? "Pause" : "Start"}</button>
       <button onClick={()=>{setTimer(0)}}>Reset</button>
+      <a href="../src/App.js">
+        <button onclick>Home</button>
+      </a>
     </>
   )
 }

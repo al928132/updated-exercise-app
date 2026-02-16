@@ -2,6 +2,7 @@ import './App.css';
 import {useState} from "react";
 import RepExercise from "./components/RepExercise";
 import DurationExercise from "./components/DurationExercise";
+import Home from "./components/Home";
 
 
 function App() {

@@ -22,6 +22,9 @@ export default function RepExercise({name}){
         <button onClick={() => {newRep()}}>+</button>
         <button onClick={() => {lessRep()}}>-</button>
         <button onClick={() => {resetReps()}}>Reset</button>
+        <a href="../src/App.js">
+            <button onclick>Home</button>
+        </a>
         </>
     )
 }

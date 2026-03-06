@@ -3,12 +3,13 @@ import { useState } from "react";
 import RepExercise from "./components/RepExercise";
 import DurationExercise from "./components/DurationExercise";
 
+const BASE = process.env.PUBLIC_URL;
 const exercises = [
-  { name: "Push-ups", screen: "reps", image: "/push-up-exercises.jpg" },
-  { name: "Planks", screen: "timer", image: "/plank.jpg" },
-  { name: "Running", screen: "timer", image: "/running.jpg" },
-  { name: "Swimming", screen: "timer", image: "/swimming.jpeg" },
-  { name: "Pull-ups", screen: "reps", image: "/pull-up.jpg" },
+  { name: "Push-ups", screen: "reps", image: `${BASE}/push-up-exercises.jpg` },
+  { name: "Planks", screen: "timer", image: `${BASE}/plank.jpg` },
+  { name: "Running", screen: "timer", image: `${BASE}/running.jpg` },
+  { name: "Swimming", screen: "timer", image: `${BASE}/swimming.jpeg` },
+  { name: "Pull-ups", screen: "reps", image: `${BASE}/pull-up.jpg` },
 ];
 
 function App() {

@@ -1,30 +1,28 @@
-import {useState} from "react";
+import { useState } from "react";
 
-export default function RepExercise({name}){
-    let[repCount, setRepCount] = useState(0);
+export default function RepExercise({ name, goHome }) {
+  let [repCount, setRepCount] = useState(0);
 
-    function newRep(){
-        setRepCount(repCount +1);
-    }
-
-    function lessRep(){
-        setRepCount(repCount -1);
-    }
-
-    function resetReps(){
-        setRepCount(0);
-    }
-
-    return(
-        <>
+  return (
+    <>
+      <div className="app-header">
         <h1>{name}</h1>
-        <h2>{repCount} Reps</h2>
-        <button onClick={() => {newRep()}}>+</button>
-        <button onClick={() => {lessRep()}}>-</button>
-        <button onClick={() => {resetReps()}}>Reset</button>
-        <a href="../src/App.js">
-            <button onclick>Home</button>
-        </a>
-        </>
-    )
+        <button className="hamburger" onClick={goHome}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div className="header-divider"></div>
+      <div className="exercise-image"></div>
+      <div className="reps-box">
+        <div className="reps-label">Reps</div>
+        <div className="reps-controls">
+          <button className="reps-btn" onClick={() => setRepCount(r => r + 1)}>+</button>
+          <span className="reps-count">{repCount}</span>
+          <button className="reps-btn" onClick={() => setRepCount(r => Math.max(0, r - 1))}>&#8722;</button>
+        </div>
+      </div>
+    </>
+  );
 }

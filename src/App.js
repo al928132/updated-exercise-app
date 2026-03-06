@@ -1,38 +1,61 @@
 import './App.css';
-import {useState} from "react";
+import { useState } from "react";
 import RepExercise from "./components/RepExercise";
 import DurationExercise from "./components/DurationExercise";
-import Home from "./components/Home";
 
+const exercises = [
+  { name: "Push-ups", screen: "reps" },
+  { name: "Planks", screen: "timer" },
+  { name: "Running", screen: "timer" },
+  { name: "Swimming", screen: "timer" },
+  { name: "Pull-ups", screen: "reps" },
+];
 
 function App() {
-  let screen;
-  let [currentScreen, setCurrentScreen] = useState("menu")
-  let [currentExercise, setCurrentExercise] = useState("none")
+  let [currentScreen, setCurrentScreen] = useState("menu");
+  let [currentExercise, setCurrentExercise] = useState("none");
 
-  if (currentScreen === "menu"){
-    screen =
-    <>
-    <h1>Execises</h1>
-    <ul>
-    <li><button onClick={() => {setCurrentExercise("Push-ups"); setCurrentScreen("reps")}}>Push-ups</button></li>
-      <li><button onClick={() => {setCurrentExercise("Planks"); setCurrentScreen("timer")}}>Planks</button></li>
-      <li><button onClick={() => {setCurrentExercise("Running"); setCurrentScreen("timer")}}>Running</button></li>
-      <li><button onClick={() => {setCurrentExercise("Swimming"); setCurrentScreen("timer")}}>Swimming</button></li>
-      <li><button onClick={() => {setCurrentExercise("Pull-ups"); setCurrentScreen("reps")}}>Pull-ups</button></li>
-    </ul>
-    </>
+  const goHome = () => setCurrentScreen("menu");
+
+  if (currentScreen === "timer") {
+    return (
+      <div className="app-container">
+        <DurationExercise name={currentExercise} goHome={goHome} />
+      </div>
+    );
   }
-  else if(currentScreen === "timer"){
-    screen = <DurationExercise name={currentExercise}/>
-  }
-  else if(currentScreen === "reps"){
-    screen = <RepExercise name={currentExercise}/>
+
+  if (currentScreen === "reps") {
+    return (
+      <div className="app-container">
+        <RepExercise name={currentExercise} goHome={goHome} />
+      </div>
+    );
   }
 
   return (
-    <div className="App">
-      <>{screen}</>
+    <div className="app-container">
+      <div className="app-header">
+        <h1>Exercises</h1>
+        <button className="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div className="header-divider"></div>
+      <ul className="exercise-list">
+        {exercises.map(({ name, screen }) => (
+          <li
+            key={name}
+            className="exercise-item"
+            onClick={() => { setCurrentExercise(name); setCurrentScreen(screen); }}
+          >
+            <span>{name}</span>
+            <span className="exercise-arrow">&gt;</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

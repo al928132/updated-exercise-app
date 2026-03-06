@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 let currentTimer = 0;
-export default function DurationExercise({ name, goHome }) {
+export default function DurationExercise({ name, goHome, image }) {
   let [running, setRunning] = useState(false);
   let [timer, setTimer] = useState(0);
 
@@ -36,7 +36,7 @@ export default function DurationExercise({ name, goHome }) {
         </button>
       </div>
       <div className="header-divider"></div>
-      <div className="exercise-image"></div>
+      <div className="exercise-image"><img src={image} alt={name} /></div>
       <div className="timer-box">
         <div className="timer-display">
           <div className="timer-unit">

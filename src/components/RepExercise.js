@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function RepExercise({ name, goHome }) {
+export default function RepExercise({ name, goHome, image }) {
   let [repCount, setRepCount] = useState(0);
 
   return (
@@ -14,7 +14,7 @@ export default function RepExercise({ name, goHome }) {
         </button>
       </div>
       <div className="header-divider"></div>
-      <div className="exercise-image"></div>
+      <div className="exercise-image"><img src={image} alt={name} /></div>
       <div className="reps-box">
         <div className="reps-label">Reps</div>
         <div className="reps-controls">

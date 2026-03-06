@@ -4,11 +4,11 @@ import RepExercise from "./components/RepExercise";
 import DurationExercise from "./components/DurationExercise";
 
 const exercises = [
-  { name: "Push-ups", screen: "reps" },
-  { name: "Planks", screen: "timer" },
-  { name: "Running", screen: "timer" },
-  { name: "Swimming", screen: "timer" },
-  { name: "Pull-ups", screen: "reps" },
+  { name: "Push-ups", screen: "reps", image: "/push-up-exercises.jpg" },
+  { name: "Planks", screen: "timer", image: "/plank.jpg" },
+  { name: "Running", screen: "timer", image: "/running.jpg" },
+  { name: "Swimming", screen: "timer", image: "/swimming.jpeg" },
+  { name: "Pull-ups", screen: "reps", image: "/pull-up.jpg" },
 ];
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
   if (currentScreen === "timer") {
     return (
       <div className="app-container">
-        <DurationExercise name={currentExercise} goHome={goHome} />
+        <DurationExercise name={currentExercise} goHome={goHome} image={exercises.find(e => e.name === currentExercise)?.image} />
       </div>
     );
   }
@@ -28,7 +28,7 @@ function App() {
   if (currentScreen === "reps") {
     return (
       <div className="app-container">
-        <RepExercise name={currentExercise} goHome={goHome} />
+        <RepExercise name={currentExercise} goHome={goHome} image={exercises.find(e => e.name === currentExercise)?.image} />
       </div>
     );
   }
